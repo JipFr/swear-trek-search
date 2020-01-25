@@ -5,10 +5,9 @@ function search(q) {
 	fetch(`${url}&q=swear_trek ${q}`).then(d => d.json()).then(d => {
 		
 		let results = d.data.filter(result => result.username === "Swear_Trek");
-		console.log(results);
 		
 		document.querySelector(".results").innerHTML = 
-			results.map(result => `<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="${result.images.original.url}">`).join("");
+			results.map(result => `<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="${result.images.original.url.split("?")[0]}">`).join("");
 
 		next_img();
 
